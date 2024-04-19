@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TestStoreMVC.Models.Product>
+
+<div class="container">
+    <h2 class="text-center mb-5">List of Products</h2>
+    <div class="row mb-3">
+        <div class="col">
+            <a class="btn btn-primary" asp-controller="Products" asp-action="Create">New Product</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="p-2">Id</th>
+                <th class="p-2">Name</th>
+                <th class="p-2">Brand</th>
+                <th class="p-2">Category</th>
+                <th class="p-2">Price</th>
+                <th class="p-2">Description</th>
+                <th class="p-2">Image</th>
+                <th class="p-2">Created At</th>
+                <th class="p-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Brand</td>
+                    <td>@product.Category</td>
+                    <td>$@product.Price</td>
+                    <td>@product.Description</td>
+                    <td>
+                        <img src="@product.ImageFileName" alt="@product.Name" class="img-thumbnail" style="max-width: 100px; max-height: 100px; margin: 5px;">
+                    </td>
+                    <td>@product.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td style="white-space:nowrap">
+                        <a class="btn btn-primary btn-sm" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

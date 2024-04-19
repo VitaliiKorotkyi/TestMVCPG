@@ -1,0 +1,134 @@
+﻿@model ProductDto
+@{
+}
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Стили для заголовка формы */
+    .form-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    /* Стили для полей ввода */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Стили для кнопок */
+    .btn-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    
+    }
+
+    }
+
+    .description-input {
+        height: 200px; /* Устанавливаем желаемую высоту поля ввода */
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">New Product</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Name</label>
+            <div class="col-sm-8">
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Brand</label>
+            <div class="col-sm-8">
+                <input class="form-control" asp-for="Brand" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Category</label>
+            <div class="col-sm-8">
+                <select class="form-select" asp-for="Category">
+                    <option value='Other'>Other</option>
+                    <option value='Phones'>Phones</option>
+                    <option value='Computers'>Computers</option>
+                    <option value='Accessories'>Accessories</option>
+                    <option value='Printers'>Printers</option>
+                    <option value='Cameras'>Cameras</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Price</label>
+            <div class="col-sm-8">
+                <input class="form-control" asp-for="Price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Description</label>
+            <div class="col-sm-8">
+                <textarea class="form-control description-input" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Image</label>
+            <div class="col-sm-8">
+                <input type="file" class="form-control" asp-for="ImageFile" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-sm-4 col-sm-4 d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-sm-4 d-grid">
+                <a class="btn btn-outline-primary" asp-controller="Products" asp-action="Index" role="button">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
